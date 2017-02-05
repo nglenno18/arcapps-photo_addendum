@@ -1,0 +1,157 @@
+body {
+    background-color:#f0f0f2;
+    margin:0;
+    padding:0;
+    font-family:"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+footer{
+  background-color:#f0f0f2;
+  margin:0 auto;
+  padding:0;
+  font-family:"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width:700px;
+}
+.b{
+  height: 110%;
+}
+#tempimg{
+  display: inline-block;
+  width: 500px;
+  border: 3px black solid;
+  /*display: none;*/
+}
+#page-container{
+    width:700px;
+    margin:5em auto;
+    padding:10px;
+    background-color:#fff;
+    border-radius:1em;
+    height:auto;
+    padding-bottom:50px;
+    margin-bottom: 0px;
+}
+#page-container2{
+    width:700px;
+    margin:5em auto;
+    padding:10px;
+    background-color:#fff;
+    border-radius:1em;
+    height:auto;
+    padding-bottom:50px;
+    margin-bottom: 0px;
+}
+.row{
+  /*float: left;*/
+  width:100%;
+  margin:0 auto;
+  margin-top: 20px!important;
+  /*padding-bottom: 50px;*/
+}
+#mid-body{
+  margin:5em auto;
+  margin-top: 0px;
+  padding:0px;
+  /*background-color:#fff;*/
+  border-radius:1em;
+  height:auto;
+  width: 720px;
+  padding-bottom:50px;
+}
+#add-row{
+  /*display: none;*/
+}
+#add-images{
+  display:none;
+  float:right;
+}
+#add-images:hover{
+  cursor: pointer;
+}
+#add-row img{
+  width: 50px;
+}
+#add-row:active{
+  border: 20px;
+  position:relative;
+  top: 8px;
+}
+#add-images:active{
+  border: 20px;
+  position:relative;
+  top: 8px;
+}
+
+#add-icon{
+  width: 60px;
+}
+.box1{
+  width:300px;
+  height:300px;
+  border:2px black solid;
+  float:left;
+  margin-left:20px;
+}
+.box2{
+  width:300px;
+  height:300px;
+  border:2px black solid;
+  float:right;
+  margin-right:20px;
+}
+.box{
+  width:300px !important;
+  height:300px !important;
+  border:2px black solid !important;
+  /*margin-right:20px;*/
+}
+#selectedBox{
+  border: 13px solid blue;
+}
+.box:hover{
+  cursor:pointer;
+}
+.box1 img{
+  width:270px;
+  height:270px;
+  object-fit: contain;
+  /*object-position:50% 50%;*/
+  /*object-fit: contain;*/
+  margin:15px;
+  margin-bottom:20px;
+  align-content:center;
+}
+.box2 img{
+  width:90%;
+  height:90%;
+  object-fit: contain;
+  margin:15px;
+  margin-bottom:20px;
+  align-content:center;
+}
+.box input{
+  display:none;
+}
+#mid-body input{
+  padding-top: 5px;
+  padding-left: 5px;
+}
+#fd{
+  display: none;
+}
+#fileDialog{
+  display:none;
+}
+.space{
+  width:20px;
+  border-top:#fff;
+  float:left;
+  color:#fff;
+}
+#au{
+  width:100%!important;
+  margin:0 auto!important;
+  display:inline-block!important;
+}
+#break{
+  color: #f0f0f2;
+}
