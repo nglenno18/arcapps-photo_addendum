@@ -84,6 +84,40 @@ footer{
 #add-icon{
   width: 60px;
 }
+
+.container1{
+  float: left;
+  width: 322px;
+}
+.container2{
+  float: right;
+  width: 322px;
+}
+.container1 input{
+	width: 93%;
+	height: inherit;
+	border: 1px solid #cccccc;
+	padding:3px;
+	font-family: Tahoma, sans-serif;
+  margin-left: 22px;
+  float: left;
+}
+.container1 input:hover{
+  background-color: lightblue;
+}
+.container2 input{
+	width: 93%;
+	height: inherit;
+	border: 1px solid #cccccc;
+	padding:3px;
+	font-family: Tahoma, sans-serif;
+  margin-right: 22px;
+  float: right;
+}
+.container2 input:hover{
+  background-color: lightblue;
+}
+
 .box1{
   width:300px;
   height:300px;
@@ -105,7 +139,7 @@ footer{
   /*margin-right:20px;*/
 }
 #selectedBox{
-  border: 13px solid blue;
+  border: 8px solid #378;
 }
 .box:hover{
   cursor:pointer;
@@ -153,5 +187,19 @@ footer{
   display:inline-block!important;
 }
 #break{
-  color: #f0f0f2;
+  float: left;
+  color: white;
+}
+.break p{
+  color:white;
+}
+.container1 p{
+  margin-left: 20px;
+}
+.fileID{
+  margin-bottom: 1px;
+  color:#CCCCCC;
+}
+.fileID:hover{
+  color:black;
 }

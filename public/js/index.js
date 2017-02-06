@@ -165,7 +165,9 @@ socket.on('connect', function(){
       img.src = 'data:image/jpeg;binary,'+info.buffer;
       console.log("IMAGE received from server for box#: ", box);
 
-      $('#'+box).html('<img src="data:image/jpg;base64,' + info.buffer + '" />')
+      $('#'+box).html('<img src="data:image/jpg;base64,' + info.buffer + '" />');
+      // $('#'+box).html('<input type="textarea" float="left"></input>');
+
       $('#add-images').css('display', 'none');
     }
   });
@@ -178,13 +180,15 @@ socket.on('connect', function(){
     var dupNode = n.cloneNode(true);
     console.log(dupNode);
     console.log(dupNode.children[0].children);
-    var b1 = dupNode.children[0].children[0];
-    var b2 = dupNode.children[0].children[2];
+    var b1 = dupNode.children[0].children[0].children[0];
+    var b2 = dupNode.children[0].children[2].children[0];
     var sp1 = dupNode.children[0].children[1];
     var br1 = dupNode.children[1];
     console.log('BREAK???: ', br1);
     console.log('SPACE??? ', sp1);
 
+    console.log('BOX!: ', b1);
+    console.log('BOX2: ', b2);
     sp1.id = sp1.id + w;
     br1.id = br1.id +w;
     dupNode.id = dupNode.id + w;

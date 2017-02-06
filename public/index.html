@@ -13,23 +13,28 @@
     <p>Click a box, launch a file dialog, select a photo, add description</p>
     <div id="au">
       <span class="row">
-        <a class="box1" id="box1" onclick="selectBox(this)">
-          <img class="img" src="images/temp2.png" align="center" width="270px" height="270px" object-fit="contain"></img>
-        </a>
-        <span class="space">f</span>
-        <a class="box2"  id="box2" onclick="selectBox(this)"><!--onclick="fileDialog.click()"-->
-          <img class="img" src="images/temp2.png" align="center"></img>
-          <br>
-        </a>
+        <div class="container1">
+          <a class="box1" id="box1" onclick="selectBox(this)">
+            <img class="img" src="images/temp2.png" align="center" width="270px" height="270px" object-fit="contain"></img>
+          </a>
+          <p class="fileID" color="#CCCCCC">fileID</p>
+          <input type="textarea" float="left"></input>
+        </div>
+
+        <span class="space">.</span>
+        <div class="container2">
+          <a class="box2"  id="box2" onclick="selectBox(this)"><!--onclick="fileDialog.click()"-->
+            <img class="img" src="images/temp2.png" align="center"></img>
+          </a>
+          <p class="fileID" color="#CCCCCC">fileID</p>
+          <input type="textarea" float="right"></input>
+        </div>
       </span>
-      <div id="break">
+      <div class="break">
         <br>
-        asdfasdfsd
-        <br>
-        <br>
+        <p text-color="white">asdfasdfsd</p>
         <br>
       </div>
-
   </div>
 </div>
 
