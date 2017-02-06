@@ -12,6 +12,7 @@
   "dependencies": {
     "delivery": "0.0.6",
     "express": "^4.14.1",
+    "file-saver": "^1.3.3",
     "node-webkit": "0.0.0",
     "socket.io": "^1.7.2",
     "wkhtmltopdf": "^0.3.3"

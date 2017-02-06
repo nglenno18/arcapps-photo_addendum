@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<div id="page-container" onclick="clickListener()">
+<div id="page-container">
     <h1>Photo Addendum</h1>
     <p>Click a box, launch a file dialog, select a photo, add description</p>
     <div id="au">
@@ -53,64 +53,73 @@
 
 </body>
 <footer>
-  <button id="cmd">Generate PDF</button>
-  <button id="exb">example button</button>
+  <!-- <button id="pdf" display="none">Generate PDF</button> -->
+  <button id="png">PNG</button>
+  <button id="jpeg">JPEG</button>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
   <script src="/js/libs/dom-to-image.js"></script>
-
-  <input id="btn" type="button" value="click" OnClick="display(this);" />
+  <script src="/js/libs/filesaver.js"></script>
 
     <script>
     var node = document.body;
     var htmlimage;
     l = { orientation: 'p', unit: 'pt', format: 'a3', compress: true, fontSize: 8, lineHeight: 0, autoSize: false, printHeaders: true, pagesplit: true };
-
     var doc = new jsPDF(l);
+
+    // $('#pdf').click(function(){
+    //   doc.addHTML($('#page-container'),0,0,{pagesplit:true},function() {
+    //      doc.save('CDC.pdf');
+    //    });
+    // });
 
     // doc.addHTML($('elementHTML'),{format:'png',pagesplit: true}});
     var pdf = new jsPDF('p','pt','a4');
 
-    $('#cmd').click(function() {
+    $('#png').click(function() {
       console.log('PNG...');
-      domtoimage.toBlob(document.getElementById('page-container'))
+      domtoimage.toBlob(document.body)
       .then(function (blob) {
-          Window.saveAs(blob, 'my-node.png');
+        window.saveAs(blob, 'my-node.png');
       })
       .catch(function (error) {
           console.error('oops, something went wrong!', error);
       });
+    });
 
-      domtoimage.toJpeg(document.body, { quality: 0.95 })
+    $('#jpeg').click(function() {
+      console.log('JPEG...');
+      domtoimage.toJpeg(document.body, { quality: 0.5 })
       .then(function (dataUrl) {
           var link = document.createElement('a');
           link.download = 'photo_addendum.jpeg';
           link.href = dataUrl;
           link.click();
+      }).catch(function (error) {
+          console.error('oops, something went wrong!', error);
       });
-
     });
     </script>
     <script>
-    var arrayWithElements = new Array();
+    // var arrayWithElements = new Array();
 
-    var clickListener = function(e) {
-        var clickedElement;
-        if(e == null) {
-            clickedElement = event.srcElement;
-        } else {
-            clickedElement = e.target;
-        }
-        // arrayWithElements.push($(clickedElement).cssSelectorAsString()); // <====
-        console.log(clickedElement);
-        // console.log(clickedElement.hasClass('box'));
-        console.log(clickedElement.getElementsByClassName("box"));
-        console.log('ELEMENT: ', clickedElement.parentNode);
-        var ele = clickedElement.parentNode;
-        var isBox = clickedElement.parentNode.className;
-
-        }
+    // var clickListener = function(e) {
+    //     var clickedElement;
+    //     if(e == null) {
+    //         clickedElement = event.srcElement;
+    //     } else {
+    //         clickedElement = e.target;
+    //     }
+    //     // arrayWithElements.push($(clickedElement).cssSelectorAsString()); // <====
+    //     console.log(clickedElement);
+    //     // console.log(clickedElement.hasClass('box'));
+    //     console.log(clickedElement.getElementsByClassName("box"));
+    //     console.log('ELEMENT: ', clickedElement.parentNode);
+    //     var ele = clickedElement.parentNode;
+    //     var isBox = clickedElement.parentNode.className;
+    //
+    //     }
     </script>
 
 </footer>

@@ -88,40 +88,35 @@ var t=1;
 
 socket.on('connect', function(){
   console.log(socket.id);
-  // $('#cmd').on('click', function(evt){
-  //   //send an html file
-  //   console.log('PDF event: ', evt);
-  //   console.log(evt.target.ownerDocument);
-  //   var htmldoc = evt.target.ownerDocument;
-  //   // console.log('URI: ', htmldoc.documentURI);
-  //   // console.log('URL: ', htmldoc.URL);
-  //   console.log(htmldoc);
-  //   //create string buffer?
-  //   socket.emit('pdf', htmldoc, function(callback){
-  //     console.log(evt);
-  //     console.log('PDF function called');
-  //   });
-  // });
 
   var delivery = new Delivery(socket);
 
   delivery.on('delivery.connect', function(delivery){
     $('#fd').on('click', function(){
       var selectedBox = document.getElementById('selectedBox');
+      if(!selectedBox) return alert('No box selected');
       $('#fd').on('change', function(evt){
+
         var files = evt.currentTarget.files;
         var length = event.currentTarget.files.length;
-        for(i = 0; i <=(length-2)/2; i++){
+        for(i = 0; i <(length-2)/2; i++){
           console.log('\n\n\n\n\nADD ROWS');
           $('#add-row').click();
         }
-
+        console.log('PREVIOUS BOX ID: ', prevBoxid);
+        // selectedBox.id = prevBoxid;
+        // $('#add-images').css('display', 'none');
+        selectBox(selectedBox);
+        var boxnum = prevBoxid.substring(prevBoxid.lastIndexOf('x')+1);
+        console.log('BOX TO INPUT TO: #', boxnum);
+        console.log('# of files: ', length);
         // var extraParams = {box: length};
         // delivery.send(evt.currentTarget.files, extraParams);
 
-        var index = 1;
-        // for(x = 0; x < length; x++){
-          var i = event.currentTarget.files[0];
+        var index = parseInt(boxnum)-1;
+        // var index = 0;
+        for(x = 0; x <=length -1; x++){
+          var i = event.currentTarget.files[x];
           // console.log(i);
           i = URL.createObjectURL(i);
           var img = new Image();
@@ -131,18 +126,17 @@ socket.on('connect', function(){
           var extraParams = {box: prevBoxid};
           index++;
 
-          delivery.send(evt.currentTarget.files[0], extraParams);
+          // delivery.send(evt.currentTarget.files[0], extraParams);
           // delivery.on('send.success', function(fileUID){
           //   console.log('FILEUID: ', fileUID);
           //   console.log('File was successfully sent!');
-          //   // var path = "/../" + fileUID.name;
           //   // $('#box2-image').attr("src", fileUID.name);
           // });
           var h;
           var w;
-          // $('#box'+index).html('<img src="' + i + '"/>');
+          $('#box'+index).html('<img src="' + i + '"/>');
 
-        // }
+        }
       });
     });
   });
@@ -166,7 +160,6 @@ socket.on('connect', function(){
       console.log("IMAGE received from server for box#: ", box);
 
       $('#'+box).html('<img src="data:image/jpg;base64,' + info.buffer + '" />');
-      // $('#'+box).html('<input type="textarea" float="left"></input>');
 
       $('#add-images').css('display', 'none');
     }
