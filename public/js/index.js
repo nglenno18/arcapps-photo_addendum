@@ -147,7 +147,7 @@ socket.on('connect', function(){
           // });
           var h;
           var w;
-          $('#box'+index).html('<img src="' + i + '"/>');
+          $('#box'+index).html('<img class="img" src="' + i + '"/>');
 
         }
       });
@@ -172,7 +172,7 @@ socket.on('connect', function(){
       img.src = 'data:image/jpeg;binary,'+info.buffer;
       console.log("IMAGE received from server for box#: ", box);
 
-      $('#'+box).html('<img src="data:image/jpg;base64,' + info.buffer + '" />');
+      $('#'+box).html('<img class ="img" src="data:image/jpg;base64,' + info.buffer + '" />');
 
       $('#add-images').css('display', 'none');
     }
@@ -200,6 +200,11 @@ socket.on('connect', function(){
     dupNode.id = dupNode.id + w;
 
     b1.id = "box"+ w;
+    var b1img = b1.getElementsByClassName('img')[0];
+    console.log('IMAGE: ', b1img);
+    if(b1img){
+      b1img.src = 'images/temp2.png';
+    }
     // $('#'+b1.id).css("margin-left", "20px");
     // $('#'+b1.id).css("float", "left");
     // $('#'+b1.id +' img').css("width", "90% !important");

@@ -137,7 +137,7 @@
             var file = evt.currentTarget.files[0];
             console.log('FILE: ', file);
             var i = URL.createObjectURL(file);
-            $('#'+ ele.id).html('<img src="' + i + '"/>');
+            $('#'+ ele.id).html('<img class="img" src="' + i + '"/>');
           });
             chooser.trigger('click');
           }
