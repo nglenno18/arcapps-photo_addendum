@@ -75,6 +75,16 @@ footer{
   position:relative;
   top: 8px;
 }
+#delete-row img{
+  display:none;
+  width: 50px;
+  padding-left: 10px;
+}
+#delete-row:active{
+  border: 20px;
+  position:relative;
+  top: 8px;
+}
 #add-images:active{
   border: 20px;
   position:relative;
@@ -192,6 +202,10 @@ footer{
 #break{
   float: left;
   color: white;
+}
+.break{
+  margin-left: 30px;
+  height: 400px;
 }
 .break p{
   color:white;
