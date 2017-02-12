@@ -1,35 +1,32 @@
 var socket = io();
 var prevBoxid;
 
-var selectBox = function(ev){
-  console.log('SELECT BOX: ', ev);
-
-  console.log('prev ID: ', prevBoxid);
-
-  var highlighted = document.getElementById('selectedBox');
-  if(highlighted){// highlighted box
-    console.log('HIGHLIGHTED BOX: ', highlighted);
-    $('#add-images').css('display', 'none');
-    // $('add-icon').css("visibility", "hidden");
-    if(ev.id != "selectedBox"){ //this ISN't the highlighted box
-    console.log('THIS SHOULD NOT the selected bx', ev.id);
-      highlighted.id = prevBoxid;
-      // ev.id = "selectedBox";
-    }else{//this IS ALREADY the selected box
-      console.log('THIS is Already HIGHLIGHTED');
-      ev.id = prevBoxid;
-    }
-  }else{  //no highlighted box
-    console.log('THERE ARE NO HIGHLIGHTED BOXES');
-    prevBoxid = ev.id;
-    ev.id = "selectedBox";
-    $('#add-images').css('display', 'block');
-
-    // $('add-images').css("display", "inline-block");
-    console.log('SHOULD DISPLAY ADD BUTTON');
-    // $('add-icon').attr("visibility", "visible");
-  }
-}
+// var selectBox = function(ev){
+//   console.log('SELECT BOX: ', ev);
+//
+//   console.log('prev ID: ', prevBoxid);
+//
+//   var highlighted = document.getElementById('selectedBox');
+//   if(highlighted){// highlighted box
+//     // console.log('HIGHLIGHTED BOX: ', highlighted);
+//     $('#add-images').css('display', 'none');
+//     // $('add-icon').css("visibility", "hidden");
+//     if(ev.id != "selectedBox"){ //this ISN't the highlighted box
+//     // console.log('THIS SHOULD NOT the selected bx', ev.id);
+//       highlighted.id = prevBoxid;
+//     }else{//this IS ALREADY the selected box
+//       // console.log('THIS is Already HIGHLIGHTED');
+//       ev.id = prevBoxid;
+//     }
+//   }else{  //no highlighted box
+//     // console.log('THERE ARE NO HIGHLIGHTED BOXES');
+//     prevBoxid = ev.id;
+//     ev.id = "selectedBox";
+//     $('#add-images').css('display', 'block');
+//
+//     console.log('SHOULD DISPLAY ADD BUTTON');
+//   }
+// }
 
 // var fd = function(evt){
 //
@@ -94,8 +91,24 @@ socket.on('connect', function(){
   delivery.on('delivery.connect', function(delivery){
     $('#fd').on('click', function(){
       var selectedBox = document.getElementById('selectedBox');
-      if(!selectedBox) return alert('No box selected');
+      // if(!selectedBox) return alert('No box selected');
+      $('#fd').unbind('change');
+
       $('#fd').on('change', function(evt){
+        var filledBoxes = document.querySelectorAll('.box1, .box2');
+        console.log('BOXES FILLED: ', filledBoxes);
+        var nextBox = "";
+        filledBoxes.forEach((b)=>{
+          if(nextBox != "") return;
+          console.log(b.firstElementChild);
+          console.log(b.firstElementChild.src);
+          var sr = b.firstElementChild.src;
+          console.log(sr.substring(sr.lastIndexOf('/')));
+          if(sr.substring(sr.lastIndexOf('/')) === '/temp2.png'){
+            console.log('Box empty at ', b);
+            return nextBox = b.id;
+          }
+        });
 
         var files = evt.currentTarget.files;
         var length = event.currentTarget.files.length;
@@ -103,13 +116,13 @@ socket.on('connect', function(){
           console.log('\n\n\n\n\nADD ROWS');
           $('#add-row').click();
         }
-        console.log('PREVIOUS BOX ID: ', prevBoxid);
-        // selectedBox.id = prevBoxid;
-        // $('#add-images').css('display', 'none');
-        selectBox(selectedBox);
-        var boxnum = prevBoxid.substring(prevBoxid.lastIndexOf('x')+1);
-        console.log('BOX TO INPUT TO: #', boxnum);
-        console.log('# of files: ', length);
+
+        // console.log('PREVIOUS BOX ID: ', prevBoxid);
+
+        // selectBox(selectedBox);
+        var boxnum = nextBox.substring(nextBox.lastIndexOf('x')+1);
+        // console.log('BOX TO INPUT TO: #', boxnum);
+        // console.log('# of files: ', length);
         // var extraParams = {box: length};
         // delivery.send(evt.currentTarget.files, extraParams);
 

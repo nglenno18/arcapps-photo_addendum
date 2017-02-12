@@ -8,24 +8,27 @@
 </head>
 
 <body>
-<div id="page-container">
+<div id="page-container" onclick="clickListener()">
     <h1>Photo Addendum</h1>
     <p>Click a box, launch a file dialog, select a photo, add description</p>
     <div id="au">
       <span class="row">
         <div class="container1">
-          <a class="box1" id="box1" onclick="selectBox(this)">
+          <!-- <a class="box1" id="box1" onclick="selectBox(this)"> -->
+          <a class="box1" id="box1">
             <img class="img" src="images/temp2.png" align="center" width="270px" height="270px" object-fit="contain"></img>
           </a>
+          <input class="fd1" id="singlefd1" type="file" accept=".png,.jpg,.JPG,.PNG"/>
           <p class="fileID" color="#CCCCCC">fileID</p>
           <input type="textarea" float="left"></input>
         </div>
 
         <span class="space">.</span>
         <div class="container2">
-          <a class="box2"  id="box2" onclick="selectBox(this)"><!--onclick="fileDialog.click()"-->
+          <a class="box2"  id="box2"><!--onclick="fileDialog.click()"-->
             <img class="img" src="images/temp2.png" align="center"></img>
           </a>
+          <input class="fd1" id="singlefd2" type="file" accept=".png,.jpg,.JPG,.PNG"/>
           <p class="fileID" color="#CCCCCC">fileID</p>
           <input type="textarea" float="right"></input>
         </div>
@@ -56,6 +59,8 @@
   <!-- <button id="pdf" display="none">Generate PDF</button> -->
   <button id="png">PNG</button>
   <button id="jpeg">JPEG</button>
+  <input id="singlefd" type="file" accept=".png,.jpg,.JPG,.PNG"/>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
@@ -102,24 +107,52 @@
     });
     </script>
     <script>
-    // var arrayWithElements = new Array();
+    var arrayWithElements = new Array();
 
-    // var clickListener = function(e) {
-    //     var clickedElement;
-    //     if(e == null) {
-    //         clickedElement = event.srcElement;
-    //     } else {
-    //         clickedElement = e.target;
-    //     }
-    //     // arrayWithElements.push($(clickedElement).cssSelectorAsString()); // <====
-    //     console.log(clickedElement);
-    //     // console.log(clickedElement.hasClass('box'));
-    //     console.log(clickedElement.getElementsByClassName("box"));
-    //     console.log('ELEMENT: ', clickedElement.parentNode);
-    //     var ele = clickedElement.parentNode;
-    //     var isBox = clickedElement.parentNode.className;
-    //
-    //     }
+    var clickListener = function(e) {
+        var clickedElement;
+        if(e == null) {
+            clickedElement = event.srcElement;
+        } else {
+            clickedElement = e.target;
+        }
+        // arrayWithElements.push($(clickedElement).cssSelectorAsString()); // <====
+        console.log(clickedElement);
+        // console.log(clickedElement.hasClass('box'));
+        var dialog = clickedElement.parentNode.parentNode;
+        dialog = dialog.getElementsByClassName("fd1")[0];
+        console.log('FILE DIALOG TO USE: ', dialog.id);
+        console.log(clickedElement.getElementsByClassName("box"));
+        console.log('ELEMENT: ', clickedElement.parentNode);
+        var ele = clickedElement.parentNode;
+        var isBox = ele.className;
+        console.log('BOX: ', isBox);
+
+
+        if(isBox === "box1" || isBox === "box2"){
+          var chooser = $('#singlefd');
+          chooser.unbind('change');
+          chooser.change(function(evt) {
+            console.log($(this).val());
+            var file = evt.currentTarget.files[0];
+            console.log('FILE: ', file);
+            var i = URL.createObjectURL(file);
+            $('#'+ ele.id).html('<img src="' + i + '"/>');
+          });
+            chooser.trigger('click');
+          }
+        //   console.log('Launch File Dialog');
+        //   $('#singlefd1').click();
+        //   $('#fileDialog').on('change', function(evt){
+        //     var file = evt.currentTarget.files;
+        //     var length = event.currentTarget.files.length;
+        //     console.log('FILE: ', files);
+        //     i = files[0];
+        //     i = URL.createObjectURL(i);
+        //     $('#'+ ele.id).html('<img src="' + i + '"/>');
+        //   });
+        // }
+        }
     </script>
 
 </footer>

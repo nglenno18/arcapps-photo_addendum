@@ -61,7 +61,7 @@ footer{
   /*display: none;*/
 }
 #add-images{
-  display:none;
+  /*display:none;*/
   float:right;
 }
 #add-images:hover{
@@ -171,6 +171,9 @@ footer{
 }
 #fd{
   display: none;
+}
+.fd1{
+  display:none;
 }
 #fileDialog{
   display:none;
