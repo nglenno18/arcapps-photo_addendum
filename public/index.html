@@ -9,8 +9,11 @@
 
 <body>
 <div id="page-container" onclick="clickListener()">
-    <h1>Photo Addendum</h1>
-    <p>Click a box, launch a file dialog, select a photo, add description</p>
+    <h1>Photo Addendum     <img float="right" id="logo" src="images/ARC_logo.png"></img></h1>
+    <label id="property-label" contenteditable="true" placeholder="Type Property Address...">Type Property Address</label>
+    <p id="instruction"><sup>Click a box, launch a file dialog, select a photo, add description</sup></p>
+    <!-- <p id="property"></p> -->
+    <!-- <sup id="date" value="new Date();"></sup> -->
     <div id="au">
       <span class="row">
         <div class="container1">
@@ -47,6 +50,7 @@
   <a id="delete-row"><img src="images/uparrow.png"/></img></a>
   <a id="add-images" onclick="$('#fd').click()"><img id="add-icon" src="images/add_icon.png"/></img></a>
   <input id="fd" type="file" accept=".png,.jpg,.JPG,.PNG" multiple/>
+
 </div>
 
 
@@ -58,8 +62,10 @@
 </body>
 <footer>
   <!-- <button id="pdf" display="none">Generate PDF</button> -->
-  <button id="png">PNG</button>
-  <button id="jpeg">JPEG</button>
+  <input type=button name=print value="Print" onClick="window.print()">
+
+  <!-- <button id="png">PNG</button>
+  <button id="jpeg">JPEG</button> -->
   <input id="singlefd" type="file" accept=".png,.jpg,.JPG,.PNG"/>
 
 

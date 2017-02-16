@@ -20,6 +20,23 @@ footer{
   border: 3px black solid;
   /*display: none;*/
 }
+#logo{
+  margin-top: 15px;
+
+  float: right;
+  width: 35%;
+  position: relative;
+  top: -15px;
+}
+#property-label{
+  font-size: 150%;
+  margin-left: 5px;
+  font-weight: bold;
+  color: lightgrey;
+}
+#property-label:hover{
+  cursor: pointer;
+}
 #page-container{
     width:700px;
     margin:5em auto;
@@ -29,6 +46,28 @@ footer{
     height:auto;
     padding-bottom:50px;
     margin-bottom: 0px;
+    box-shadow: 10px 10px 10px darkgrey;
+}
+#page-container h1{
+  /*padding-bottom: 0px;*/
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+#instruction{
+  width: 60%;
+  margin: 5px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+#property{
+  margin-top: 5px;
+}
+#date{
+  float:right;
+  position: relative;
+  top: -20px;
+  margin-right: 10px;
 }
 #page-container2{
     width:700px;
@@ -89,6 +128,9 @@ footer{
   border: 20px;
   position:relative;
   top: 8px;
+}
+#singlefd{
+  display: none;
 }
 
 #add-icon{
